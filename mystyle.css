@@ -1,0 +1,41 @@
+body{
+  background-color: #2d3e50;
+  color: #b3b3b3;
+  font-size: 18px;
+}
+h1 {
+  color: 	#cfa865;
+  text-align: center;
+}
+p {
+  color: #c74e35;
+}
+fieldset {
+  margin: 2em 0;
+  padding: 1em 2em;
+  border: solid 1px #909aaf;
+  border-radius: 6px;
+  min-width: 200px;
+}
+legend {
+  font-size: 1.25em;
+  color: #c74e58;
+  padding: 0 .25em;
+}
+label {
+  display: inline-block;
+  color: #b3b3b3;
+  margin-top: 1em;
+}
+input[type=number] {
+  padding: .25em;
+  border: solid 1px;
+  font-size: 1em;
+  width: 3em;
+  height: 1.25em;
+  background: #b3b3b3;
+}
+input[name="chapels"] {
+  width: 2em;
+  height: 1.25em;
+}

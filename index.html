@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="mystyle.css"/>
+<meta charset="UTF-8">
+
+<style>
+/*body {
+  background-color: #2d3e50;
+  color: #b3b3b3;
+  font-size: 18px;
+}
+h1 {
+  color: 	#cfa865;
+  text-align: center;
+}
+p {
+  color: #c74e35;
+}*/
+fieldset {
+  margin: 2em 0;
+  padding: 1em 2em;
+  border: solid 1px #909aaf;
+  border-radius: 6px;
+  min-width: 200px;
+}
+legend {
+  font-size: 1.25em;
+  color: #c74e58;
+  padding: 0 .25em;
+}
+label {
+  display: inline-block;
+  color: #b3b3b3;
+  margin-top: 1em;
+}
+input[type=number] {
+  padding: .25em;
+  border: solid 1px;
+  font-size: 1em;
+  width: 3em;
+  height: 1.25em;
+  background: #b3b3b3;
+}
+input[name="chapels"] {
+  width: 2em;
+  height: 1.25em;
+}
+</style>
+
+<script>
+// A CAD currency number formatter.
+var formatter = new Intl.NumberFormat(undefined, {
+  style: 'currency',
+  currency: 'CAD',
+});
+
+function numCampers() {
+    //Assume form with id="estimator"
+    var theForm = document.forms["estimator"];
+    //Get a reference to the TextBox
+    var quantity = theForm.elements["campers"];
+    var camperNum =0;
+    //If the textbox is not blank
+    if(campers.value!="")
+    {
+        camperNum = parseInt(campers.value);
+    }
+    return camperNum;
+}
+function numLeaders() {
+    var theForm = document.forms["estimator"];
+    var quantity = theForm.elements["leaders"];
+    var leaderNum =0;
+    if(leaders.value!="")
+    {
+        leaderNum = parseInt(leaders.value);
+    }
+    return leaderNum;
+}
+function numNights() {
+    var theForm = document.forms["estimator"];
+    var quantity = theForm.elements["nights"];
+    var val =0;
+    if(nights.value!="")
+    {
+        val = parseInt(nights.value);
+    }
+    return val;
+}
+function overnightCost() {
+    var theForm = document.forms["baserates"];
+    var quantity = theForm.elements["overnight"];
+    var val =0;
+    if(overnight.value!="")
+    {
+        val = parseInt(overnight.value);
+    }
+    return val;
+}
+function getBreakfastCost() {
+    var theForm = document.forms["baserates"];
+    var quantity = theForm.elements["breakfast"];
+    var val =0;
+    if(breakfast.value!="")
+    {
+        val = parseInt(breakfast.value);
+    }
+    return val;
+}
+function getLunchCost() {
+    var theForm = document.forms["baserates"];
+    var quantity = theForm.elements["lunch"];
+    var val =0;
+    if(lunch.value!="")
+    {
+        val = parseInt(lunch.value);
+    }
+    return val;
+}
+function getSupperCost() {
+    var theForm = document.forms["baserates"];
+    var quantity = theForm.elements["supper"];
+    var val =0;
+    if(supper.value!="")
+    {
+        val = parseInt(supper.value);
+    }
+    return val;
+}
+function getSnackCost() {
+    var theForm = document.forms["baserates"];
+    var quantity = theForm.elements["snack"];
+    var val =0;
+    if(snack.value!="")
+    {
+        val = parseInt(snack.value);
+    }
+    return val;
+}
+function getChapelCost() {
+    var theForm = document.forms["baserates"];
+    var quantity = theForm.elements["chapel"];
+    var val =0;
+    if(chapel.value!="")
+    {
+        val = parseInt(chapel.value);
+    }
+    return val;
+}
+function getGymCost() {
+    var theForm = document.forms["baserates"];
+    var quantity = theForm.elements["gym"];
+    var val =0;
+    if(gym.value!="")
+    {
+        val = parseInt(gym.value);
+    }
+    return val;
+}
+function getSaunaCost() {
+    var theForm = document.forms["baserates"];
+    var quantity = theForm.elements["sauna"];
+    var val =0;
+    if(sauna.value!="")
+    {
+        val = parseInt(sauna.value);
+    }
+    return val;
+}
+function getBreakfastNum() {
+    var theForm = document.forms["estimator"];
+    var quantity = theForm.elements["breakfasts"];
+    var val =0;
+    if(breakfasts.value!="")
+    {
+        val = parseInt(breakfasts.value);
+    }
+    return val;
+}
+function getLunchNum() {
+    var theForm = document.forms["estimator"];
+    var quantity = theForm.elements["lunches"];
+    var val =0;
+    if(lunches.value!="")
+    {
+        val = parseInt(lunches.value);
+    }
+    return val;
+}
+function getSupperNum() {
+    var theForm = document.forms["estimator"];
+    var quantity = theForm.elements["suppers"];
+    var val =0;
+    if(suppers.value!="")
+    {
+        val = parseInt(suppers.value);
+    }
+    return val;
+}
+function getSnackNum() {
+    var theForm = document.forms["estimator"];
+    var quantity = theForm.elements["snacks"];
+    var val =0;
+    if(snacks.value!="")
+    {
+        val = parseInt(snacks.value);
+    }
+    return val;
+}
+function getChapelNum() {
+    var val = 0;
+    var theForm = document.forms["estimator"];
+    var quantity = theForm.elements["chapels"];
+    if(quantity[0].checked){
+        val = 1;
+    }
+    return val;
+}
+function getGymNum() {
+    var theForm = document.forms["estimator"];
+    var quantity = theForm.elements["gyms"];
+    var val =0;
+    if(gyms.value!="")
+    {
+        val = parseInt(gyms.value);
+    }
+    return val;
+}
+function getSaunaNum() {
+    var theForm = document.forms["estimator"];
+    var quantity = theForm.elements["saunas"];
+    var val =0;
+    if(saunas.value!="")
+    {
+        val = parseInt(saunas.value);
+    }
+    return val;
+}
+function getDiscount() {
+  var theForm = document.forms["estimator"];
+  var quantity = theForm.elements["discount"];
+  var val =0;
+  if(discount.value!="")
+  {
+      val = parseInt(discount.value);
+  }
+  return val;
+}
+function leaderAcc() {
+  var leaderNum = numLeaders();
+  var camperNum = numCampers();
+  var nightNum = numNights();
+  var overnightPrice = overnightCost();
+  var leadPay = 0;
+  if((camperNum/8 < leaderNum)) {
+    leadPay = leaderNum-(Math.ceil(camperNum/8));
+  }
+  var cost = leadPay*overnightPrice*nightNum;
+  var val = formatter.format(cost);
+  document.getElementById('leaderAccom').innerHTML =
+  "Leader accomidation cost: "+val+" (There are "+leadPay+" leaders over the 1:8 ratio)";
+  return cost;
+}
+function personFoodCost() {
+  var bCost = getBreakfastCost();
+  var lCost = getLunchCost();
+  var suCost = getSupperCost();
+  var snCost = getSnackCost();
+  var bNum = getBreakfastNum();
+  var lNum = getLunchNum();
+  var suNum = getSupperNum();
+  var snNum = getSnackNum();
+
+  var cost = bCost*bNum+lCost*lNum+suCost*suNum+snCost*snNum;
+  var val = formatter.format(cost);
+
+  document.getElementById('foodCost').innerHTML =
+  "Per person food cost: "+val;
+  return cost;
+}
+function camperExtraCost() {
+  var cNum = getChapelNum();
+  var gNum = getGymNum();
+  var sNum = getSaunaNum();
+  var cCost = getChapelCost();
+  var gCost = getGymCost();
+  var sCost = getSaunaCost();
+  var campNum = numCampers();
+  var cost = 0;
+  if(campNum>0) {
+    cost = (cNum*cCost+gNum*gCost+sNum*sCost)/campNum;
+  }
+  var val = formatter.format(cost);
+  document.getElementById('camperExtras').innerHTML =
+  "Per camper extra costs (chapel/gym/sauna): "+val;
+  return cost;
+}
+function camperGross() {
+  var campEx = camperExtraCost();
+  var campFood = personFoodCost();
+  var campNights = numNights();
+  var nightCost = overnightCost();
+  var cost = campEx+campFood+campNights*nightCost;
+  var val = formatter.format(cost);
+  document.getElementById('campGross').innerHTML =
+  "Gross camper cost: "+val;
+  return cost;
+}
+function leaderGross() {
+  var leadNum = numLeaders();
+  var leadAccTotal = leaderAcc();
+  var food = personFoodCost();
+  var cost = 0;
+  if(leadNum>0) {
+    cost = leadAccTotal/leadNum+food;
+  }
+  var val = formatter.format(cost);
+  document.getElementById('leadGross').innerHTML =
+  "Gross leader cost: "+val;
+  return cost;
+}
+function camperNet() {
+  var dis = getDiscount();
+  var cGross = camperGross();
+  var cost = (1-(dis/100))*cGross;
+  var val = formatter.format(cost);
+  document.getElementById('campNet').innerHTML =
+  "Net camper cost: "+val;
+  return cost;
+}
+function leaderNet() {
+  var dis = getDiscount();
+  var lGross = leaderGross();
+  var cost = (1-(dis/100))*lGross;
+  var val = formatter.format(cost);
+  document.getElementById('leadNet').innerHTML =
+  "Net leader cost: "+val;
+  return cost;
+}
+function total(){
+    var cNum = numCampers();
+    var lNum = numLeaders();
+    var cNet = camperNet();
+    var lNet = leaderNet();
+    var cost = cNum*cNet + lNum*lNet;
+    var val = formatter.format(cost);
+
+    document.getElementById('totalCost').innerHTML = "Total: "+val;
+    return cost;
+}
+function calculate() {
+  leaderAcc();
+  personFoodCost();
+  camperExtraCost();
+  camperGross();
+  leaderGross();
+  camperNet();
+  leaderNet();
+  total();
+}
+
+</script>
+</head>
+<body>
+
+<h1>Gardom Lake Bible Camp & Retreat Centre</h1>
+  <form action="" id="estimator" onsubmit="return false;">
+     <fieldset>
+      <legend>Cost Estimator</legend>
+
+      <label for="campers">How many campers are coming?</label>
+      <input type="number" placeholder="#" id="campers" name="campers" onclick="calculate()"><br>
+
+      <label for="leaders">How many leaders are coming?</label>
+      <input type="number" placeholder="#" id="leaders" name="leaders" onclick="calculate()"><br>
+
+      <label for="nights">How many nights is the stay?</label>
+      <input type="number" placeholder="#" id="nights" name="nights" onclick="calculate()"><br>
+
+      <label for="breakfasts">Number of breakfasts:</label>
+      <input type="number" placeholder="#" id="breakfasts" name="breakfasts" onclick="calculate()"><br>
+
+      <label for="lunches">Number of lunches:</label>
+      <input type="number" placeholder="#" id="lunches" name="lunches" onclick="calculate()"><br>
+
+      <label for="suppers">Number of suppers:</label>
+      <input type="number" placeholder="#" id="suppers" name="suppers" onclick="calculate()"><br>
+
+      <label for="snacks">Number of snacks:</label>
+      <input type="number" placeholder="#" id="snacks" name="snacks" onclick="calculate()"><br>
+
+      <label for="chapels">Using Chapel?</label>
+      <input type="radio" id="yes" name="chapels" value="1" onclick="calculate()"/>Yes
+      <input type="radio" id="no" name="chapels" value="0" onclick="calculate()"/>No<br>
+
+      <label for="gyms">Gym (days of use):</label>
+      <input type="number" placeholder="#" id="gyms" name="gyms" onclick="calculate()"><br>
+
+      <label for="saunas">Sauna (days of use):</label>
+      <input type="number" placeholder="#" id="saunas" name="saunas" onclick="calculate()"><br>
+
+      <label for="discount">Group rate/discount%:</label>
+      <input type="number" placeholder="%" id="discount" name="discount" onclick="calculate()" list="defaultNumbers">
+      <datalist id="defaultNumbers">
+        <option value="10">
+        <option value="15">
+        <option value="20">
+        <option value="25">
+      </datalist>
+      <p style="display:inline">Discounts: (41-60) = 10%; (61-100) = 15%; 101+ = 20%</p>
+
+    </fieldset>
+  </form>
+
+  <fieldset>
+    <p> Estimated Costs: </p>
+    <div id="leaderAccom"></div>
+    <div id="foodCost"></div>
+    <div id="camperExtras"></div>
+    <div id="campGross"></div>
+    <div id="leadGross"></div>
+    <p>Totals:</p>
+    <div id="campNet"></div>
+    <div id="leadNet"></div>
+    <div id="totalCost"></div>
+  </fieldset>
+
+  <form action="" id="baserates" onsubmit="return false;">
+    <fieldset>
+      <legend>Base Rates</legend>
+
+      <p>Per Person Fees</P>
+
+        <label for="overnight">Overnight Charge:</label>
+        <input type="number" id="overnight" name="overnight" value="45"><br>
+
+        <label for="breakfast">Breakfast:</label>
+        <input type="number" id="breakfast" name="breakfast" value="13"><br>
+
+        <label for="lunch">Lunch:</label>
+        <input type="number" id="lunch" name="lunch" value="16"><br>
+
+        <label for="supper">Supper:</label>
+        <input type="number" id="supper" name="supper" value="19"><br>
+
+        <label for="snack">Snack:</label>
+        <input type="number" id="snack" name="snack" value="3"><br>
+
+        <p>Per Group Fees</P>
+
+          <label for="chapel">Chapel:</label>
+          <input type="number" id="chapel" name="chapel" value="250"><br>
+
+          <label for="gym">Gym:</label>
+          <input type="number" id="gym" name="gym" value="80"><br>
+
+          <label for="sauna">Sauna:</label>
+          <input type="number" id="sauna" name="sauna" value="50"><br>
+
+        </fieldset>
+      </form>
+
+</body>
+</html>
